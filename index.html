@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="lt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bastel.lt – Priedangų įrengimas</title>
+    <title>BASTEL – Priedangų įrengimas</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -21,7 +20,7 @@
         }
         header {
             background: url('https://i.imgur.com/7p46FWT.jpg') center/cover no-repeat;
-            padding: 120px 20px;
+            padding: 160px 20px;
             text-align: center;
             position: relative;
         }
@@ -31,18 +30,24 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0, 0, 0, 0.6);
         }
-        header h1, header p {
+        header h1, header p, header a {
             position: relative;
             z-index: 1;
         }
         header h1 {
             font-size: 3em;
             color: var(--accent);
+            margin-bottom: 10px;
         }
-        header p {
-            font-size: 1.3em;
-            max-width: 700px;
-            margin: 0 auto;
+        header a.button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
         }
         section {
             padding: 60px 20px;
@@ -106,13 +111,13 @@
 <body>
 
     <header>
-        <h1>bastel.lt</h1>
-        <p>Požeminių priedangų įrengimas, garažų modernizavimas ir saugių sprendimų diegimas visoje Lietuvoje.</p>
+        <h1>PRIEDANGŲ ĮRENGIMAS</h1>
+        <a href="#contact" class="button">Susisiekite su mumis</a>
     </header>
 
     <section>
         <h2>Apie mus</h2>
-        <p>Esame profesionalų komanda, besispecializuojanti priedangų ir apsaugos sistemų įrengime. Užtikriname kokybę, saugumą ir konfidencialumą. Dirbame visoje Lietuvoje.</p>
+        <p>Esame profesionalų komanda, besispecializuojanti priedangų įrengime. Užtikriname kokybę sklandumą. Dirbame Vilniau regione.</p>
     </section>
 
     <section>
@@ -123,35 +128,17 @@
                 <p>Įrengiame saugias slėptuves rūsiuose ar garažuose, atitinkančias civilinės saugos reikalavimus.</p>
             </div>
             <div class="card">
-                <h3>Garažų modernizavimas</h3>
-                <p>Transformuojame esamus garažus į funkcionalias priedangas su įėjimo kontrolės sistemomis.</p>
+                <h3>Rezerviniai elektros energijos sprendimai</h3>
+                <p>Diegiame autonominius energijos šaltinius kaip generatoriai ir energijos kaupikliai.</p>
             </div>
             <div class="card">
                 <h3>Ventiliacijos sprendimai</h3>
-                <p>Diegiame oro filtravimo ir slėgio valdymo sistemas, užtikrinančias kvėpuojamo oro kokybę.</p>
+                <p>Diegiame oro filtravimo sistemas, užtikrinančias kvėpuojamo oro kokybę.</p>
             </div>
         </div>
     </section>
 
-    <section>
-        <h2>Kainos</h2>
-        <div class="card-container">
-            <div class="card">
-                <h3>Priedanga rūsyje</h3>
-                <p>Nuo 3500 €</p>
-            </div>
-            <div class="card">
-                <h3>Garažo pertvarkymas</h3>
-                <p>Nuo 2800 €</p>
-            </div>
-            <div class="card">
-                <h3>Vėdinimo sistemos</h3>
-                <p>Nuo 1200 €</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
+    <section id="contact">
         <h2>Kontaktai</h2>
         <form action="https://formspree.io/f/xwkgrpyg" method="POST">
             <input type="text" name="name" placeholder="Vardas" required>
@@ -159,7 +146,7 @@
             <textarea name="message" rows="4" placeholder="Jūsų žinutė" required></textarea>
             <button type="submit">Siųsti žinutę</button>
         </form>
-        <p style="margin-top:20px;">Vilnius, Pavilnionių g. rajonas<br>Telefonas: +370 612 34567<br>El. paštas: info@bastel.lt</p>
+        <p style="margin-top:20px;">Vilnius<br>Telefonas: +370 664 20728<br>El. paštas: info@bastel.lt</p>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2306.524085217853!2d25.236593615692956!3d54.7076423802786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd941b1e3cf88f%3A0x8a740b5a503cb37b!2sPavilnioni%C5%B3%20g.%2C%20Vilnius!5e0!3m2!1sen!2slt!4v1712503220217!5m2!1sen!2slt" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
