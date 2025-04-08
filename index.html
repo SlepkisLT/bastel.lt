@@ -19,9 +19,20 @@
             color: var(--text-light);
         }
         header {
-            background: url('https://images.unsplash.com/photo-1607860866426-0e1a5c9978bb?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
-            padding: 80px 20px;
+            background: url('https://i.imgur.com/7p46FWT.jpg') center/cover no-repeat;
+            padding: 120px 20px;
             text-align: center;
+            position: relative;
+        }
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        header h1, header p {
+            position: relative;
+            z-index: 1;
         }
         header h1 {
             font-size: 3em;
