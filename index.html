@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bastel.lt – Priedangų įrengimas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --card-bg: #2e2e2e;
+            --accent: #F0C300;
+            --text-light: #ffffff;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background: var(--dark-bg);
+            color: var(--text-light);
+        }
+        header {
+            background: url('https://images.unsplash.com/photo-1607860866426-0e1a5c9978bb?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3em;
+            color: var(--accent);
+        }
+        header p {
+            font-size: 1.3em;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        h2 {
+            color: var(--accent);
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        input, textarea {
+            padding: 12px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            font-size: 1em;
+            background: #111;
+            color: white;
+        }
+        button {
+            padding: 14px;
+            background: var(--accent);
+            color: black;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>bastel.lt</h1>
+        <p>Požeminių priedangų įrengimas, garažų modernizavimas ir saugių sprendimų diegimas visoje Lietuvoje.</p>
+    </header>
+
+    <section>
+        <h2>Apie mus</h2>
+        <p>Esame profesionalų komanda, besispecializuojanti priedangų ir apsaugos sistemų įrengime. Užtikriname kokybę, saugumą ir konfidencialumą. Dirbame visoje Lietuvoje.</p>
+    </section>
+
+    <section>
+        <h2>Paslaugos</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Priedangų įrengimas</h3>
+                <p>Įrengiame saugias slėptuves rūsiuose ar garažuose, atitinkančias civilinės saugos reikalavimus.</p>
+            </div>
+            <div class="card">
+                <h3>Garažų modernizavimas</h3>
+                <p>Transformuojame esamus garažus į funkcionalias priedangas su įėjimo kontrolės sistemomis.</p>
+            </div>
+            <div class="card">
+                <h3>Ventiliacijos sprendimai</h3>
+                <p>Diegiame oro filtravimo ir slėgio valdymo sistemas, užtikrinančias kvėpuojamo oro kokybę.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Kainos</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Priedanga rūsyje</h3>
+                <p>Nuo 3500 €</p>
+            </div>
+            <div class="card">
+                <h3>Garažo pertvarkymas</h3>
+                <p>Nuo 2800 €</p>
+            </div>
+            <div class="card">
+                <h3>Vėdinimo sistemos</h3>
+                <p>Nuo 1200 €</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Kontaktai</h2>
+        <form action="https://formspree.io/f/xwkgrpyg" method="POST">
+            <input type="text" name="name" placeholder="Vardas" required>
+            <input type="email" name="email" placeholder="El. paštas" required>
+            <textarea name="message" rows="4" placeholder="Jūsų žinutė" required></textarea>
+            <button type="submit">Siųsti žinutę</button>
+        </form>
+        <p style="margin-top:20px;">Vilnius, Pavilnionių g. rajonas<br>Telefonas: +370 612 34567<br>El. paštas: info@bastel.lt</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2306.524085217853!2d25.236593615692956!3d54.7076423802786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd941b1e3cf88f%3A0x8a740b5a503cb37b!2sPavilnioni%C5%B3%20g.%2C%20Vilnius!5e0!3m2!1sen!2slt!4v1712503220217!5m2!1sen!2slt" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <footer>
+        &copy; 2025 Bastel. Visos teisės saugomos.
+    </footer>
+
+</body>
+</html>
