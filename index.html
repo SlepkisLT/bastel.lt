@@ -95,12 +95,12 @@ p{margin:0;color:var(--charcoal)}
 .dots{display:flex;gap:6px}.dots i{width:9px;height:9px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--ash)}
 .tag{margin-left:auto;font-size:10.5px;line-height:1;padding:5px 8px;border-radius:999px;box-shadow:0 0 0 1px var(--hair);color:var(--stone)}
 .panel-body{padding:18px 18px 8px;font:400 13px/1.8 var(--mono);color:var(--ink)}
-.ln{display:grid;grid-template-columns:minmax(0,1fr) 4ch 6ch;column-gap:1ch;align-items:baseline;opacity:0;transform:translateY(4px);animation:ln .4s ease forwards;animation-delay:calc(var(--i) * 140ms + 200ms)}
+.ln{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1ch;align-items:baseline;opacity:0;transform:translateY(4px);animation:ln .4s ease forwards;animation-delay:calc(var(--i) * 140ms + 200ms)}
 .ln .k{flex:1;min-width:0;display:flex;gap:8px;overflow:hidden;white-space:nowrap}
 .ln .k::after{content:"";flex:1;border-bottom:1px dotted var(--ash);transform:translateY(-4px);min-width:12px}
 .ln .v{display:contents}
 .ln .v i{font-style:normal;text-align:right;white-space:nowrap}
-.ln .v u{text-decoration:none;text-align:right;white-space:nowrap}
+.ln .unit{color:var(--smoke)}
 .ok{color:var(--green)}
 .cmd{color:var(--ink);font-weight:600}
 .ln.plain .k{grid-column:1 / -1}
@@ -322,13 +322,13 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
       <div class="panel-top"><span class="dots"><i></i><i></i><i></i></span> Sąmata · butas 86 m² <span class="tag">Pavyzdys</span></div>
       <div class="panel-body">
         <div class="ln plain" style="--i:0"><span class="k"><span class="cmd">▸ bastel sąmata</span></span></div>
-        <div class="ln" style="--i:1"><span class="k"><span class="ok">✓</span> Šviestuvai</span><span class="v"><i>34</i><u>vnt.</u></span></div>
-        <div class="ln" style="--i:2"><span class="k"><span class="ok">✓</span> Kištukiniai lizdai</span><span class="v"><i>41</i><u>vnt.</u></span></div>
-        <div class="ln" style="--i:3"><span class="k"><span class="ok">✓</span> Jungikliai</span><span class="v"><i>18</i><u>vnt.</u></span></div>
-        <div class="ln" style="--i:4"><span class="k"><span class="ok">✓</span> Kabelis 3×1,5 mm²</span><span class="v"><i>286</i><u>m</u></span></div>
-        <div class="ln" style="--i:5"><span class="k"><span class="ok">✓</span> Kabelis 3×2,5 mm²</span><span class="v"><i>318</i><u>m</u></span></div>
-        <div class="ln" style="--i:6"><span class="k"><span class="ok">✓</span> Montažinės medžiagos</span><span class="v"><i>1</i><u>kompl.</u></span></div>
-        <div class="ln" style="--i:7"><span class="k"><span class="ok">✓</span> Elektros skydas</span><span class="v"><i>1</i><u>kompl.</u></span></div>
+        <div class="ln" style="--i:1"><span class="k"><span class="ok">✓</span> Šviestuvai<span class="unit">(vnt.)</span></span><span class="v"><i>34</i></span></div>
+        <div class="ln" style="--i:2"><span class="k"><span class="ok">✓</span> Kištukiniai lizdai<span class="unit">(vnt.)</span></span><span class="v"><i>41</i></span></div>
+        <div class="ln" style="--i:3"><span class="k"><span class="ok">✓</span> Jungikliai<span class="unit">(vnt.)</span></span><span class="v"><i>18</i></span></div>
+        <div class="ln" style="--i:4"><span class="k"><span class="ok">✓</span> Kabelis 3×1,5 mm²<span class="unit">(m)</span></span><span class="v"><i>286</i></span></div>
+        <div class="ln" style="--i:5"><span class="k"><span class="ok">✓</span> Kabelis 3×2,5 mm²<span class="unit">(m)</span></span><span class="v"><i>318</i></span></div>
+        <div class="ln" style="--i:6"><span class="k"><span class="ok">✓</span> Montažinės medžiagos<span class="unit">(kompl.)</span></span><span class="v"><i>1</i></span></div>
+        <div class="ln" style="--i:7"><span class="k"><span class="ok">✓</span> Elektros skydas<span class="unit">(kompl.)</span></span><span class="v"><i>1</i></span></div>
       </div>
       <div class="sum">
         <div class="row" style="--i:8"><span class="muted">Montuotojo pasiūlymas</span><span class="strike">2 960 €</span></div>
