@@ -352,7 +352,7 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
   <div class="facts">
     <div class="fact"><b>24 val.</b><span>nuo projekto gavimo iki sąmatos</span></div>
     <div class="fact"><b>Nuo 40 €</b><span>už vieno objekto sąmatą</span></div>
-    <div class="fact"><b>1 failas</b><span>PDF, DWG ar nuotrauka – to pakanka</span></div>
+    <div class="fact"><b>1 failas</b><span>PDF ar aiški nuotrauka – to pakanka</span></div>
     <div class="fact"><b>Montuotojo kainos</b><span>medžiagoms, jei jų prireiks</span></div>
   </div>
 
@@ -482,10 +482,10 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
         <div class="hp" aria-hidden="true"><input type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
 
         <div class="drop" id="drop">
-          <input type="file" id="file" accept=".pdf,.dwg,.dxf,.jpg,.jpeg,.png,.heic,.zip" multiple aria-label="Pasirinkite projekto failus">
+          <input type="file" id="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" multiple aria-label="Pasirinkite projekto failus">
           <div class="ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#111827" stroke-width="1.5"><path d="M8 11V2M4.5 5.5 8 2l3.5 3.5M2 11v3h12v-3"/></svg></div>
           <strong>Nutempkite projektą čia arba pasirinkite failą</strong>
-          <span>PDF · DWG · DXF · JPG · PNG · ZIP — iki 10 MB</span>
+          <span id="dropHint">PDF · JPG · PNG — iki 10 MB</span>
         </div>
         <ul class="files" id="files"></ul>
         <div id="fileInputs" hidden></div>
@@ -536,7 +536,7 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
         <h2>Dažniausi klausimai.</h2>
       </div>
       <div>
-        <details open><summary>Kokio formato projektą reikia atsiųsti?</summary><p>Tinka PDF, DWG/DXF arba aiški nuotrauka. Svarbiausia, kad plane būtų pažymėti šviestuvai, lizdai ir jungikliai: apšvietimo, galios ar bendras elektros planas.</p></details>
+        <details open><summary>Kokio formato projektą reikia atsiųsti?</summary><p>Tinka PDF arba aiški nuotrauka (JPG, PNG). Jei projektas turimas tik DWG formatu, išsaugokite jį kaip PDF. Svarbiausia, kad plane būtų pažymėti šviestuvai, lizdai ir jungikliai: apšvietimo, galios ar bendras elektros planas.</p></details>
         <details><summary>Kiek kainuoja sąmata?</summary><p>Nuo 40 € už objektą. Tikslią kainą pasakysime gavę projektą, dar prieš pradėdami darbą, tad niekuo nerizikuojate.</p></details>
         <details><summary>Per kiek laiko gausiu sąmatą?</summary><p>Per 24 valandas nuo projekto gavimo.</p></details>
         <details><summary>Kodėl klausiate apie sienas ir grindis?</summary><p>Mūriniame ir karkasiniame name naudojamos skirtingos montažinės dėžutės ir tvirtinimo medžiagos. O jei grindys dar neišlietos, dalį kabelių galima pakloti grindyse, todėl keičiasi trasos ir kabelių kiekis.</p></details>
@@ -587,7 +587,12 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   /* ---------- upload ---------- */
-  var MAX = 10 * 1024 * 1024;
+  // Google Apps Script adresas (Deploy → Web app → URL). Kol tuščia, forma siunčia per FormSubmit į info@bastel.lt.
+  var SCRIPT_URL = '';
+  var MAX_MB = SCRIPT_URL ? 25 : 10, MAX = MAX_MB * 1024 * 1024;
+  var TOO_BIG = 'Failai viršija ' + MAX_MB + ' MB. Sumažinkite failą arba siųskite el. paštu info@bastel.lt.';
+  var OK_TYPE = /\.(pdf|jpe?g|png)$/i;
+  document.getElementById('dropHint').textContent = 'PDF · JPG · PNG — iki ' + MAX_MB + ' MB';
   var form = document.getElementById('upload'), input = document.getElementById('file'),
       drop = document.getElementById('drop'), list = document.getElementById('files'),
       holder = document.getElementById('fileInputs'), err = document.getElementById('err');
@@ -616,15 +621,21 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
       var el = document.createElement('input'); el.type = 'file'; el.name = 'Projektas_' + (i + 1); el.files = dt.files;
       holder.appendChild(el);
     });
-    err.textContent = total() > MAX ? 'Failai viršija 10 MB. Didesnius failus siųskite el. paštu info@bastel.lt.' : '';
+    err.textContent = total() > MAX ? TOO_BIG : '';
   }
   function add(files){
-    if (!canDT) { picked = Array.prototype.slice.call(files); render(); return; }
-    Array.prototype.forEach.call(files, function(f){
+    var all = Array.prototype.slice.call(files);
+    files = all.filter(function(f){ return OK_TYPE.test(f.name); });
+    var skipped = all.length - files.length;
+    if (!canDT && !SCRIPT_URL) { picked = files; render(); }
+    else {
+    files.forEach(function(f){
       if (!picked.some(function(p){ return p.name === f.name && p.size === f.size; })) picked.push(f);
     });
     input.value = '';
     sync();
+    }
+    if (skipped) err.textContent = 'Tinka tik PDF, JPG arba PNG failai' + (skipped === all.length ? '.' : ' – kiti failai praleisti.');
   }
   input.addEventListener('change', function(){ add(input.files); });
   ['dragenter','dragover'].forEach(function(t){ drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.add('over'); }); });
@@ -648,14 +659,51 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
     document.getElementById('fs-grindys').classList.toggle('bad', !grind);
     var msg = '';
     if (!picked.length) msg = 'Pridėkite bent vieną projekto failą.';
-    else if (total() > MAX) msg = 'Failai viršija 10 MB. Didesnius failus siųskite el. paštu info@bastel.lt.';
+    else if (total() > MAX) msg = TOO_BIG;
     else if (!konstr) msg = 'Pažymėkite, ar pastatas mūrinis, ar karkasinis.';
     else if (!grind) msg = 'Pažymėkite, ar grindys jau išlietos.';
     else if (!email.value || !email.checkValidity()) { msg = 'Įrašykite teisingą el. pašto adresą, kad galėtume atsakyti.'; email.focus(); }
     if (msg) { e.preventDefault(); err.textContent = msg; return; }
     err.textContent = '';
     var s = document.getElementById('submit'); s.disabled = true; s.innerHTML = 'Siunčiama…';
+    if (SCRIPT_URL) { e.preventDefault(); sendToDrive(s, konstr.value, grind.value); }
   });
+
+  function readB64(f){
+    return new Promise(function(res, rej){
+      var r = new FileReader();
+      r.onload = function(){ res(String(r.result).split(',')[1] || ''); };
+      r.onerror = function(){ rej(r.error); };
+      r.readAsDataURL(f);
+    });
+  }
+  function mime(f){
+    if (f.type) return f.type;
+    return /\.pdf$/i.test(f.name) ? 'application/pdf' : /\.png$/i.test(f.name) ? 'image/png' : 'image/jpeg';
+  }
+  function sendToDrive(btn, konstr, grind){
+    var v = function(n){ var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
+    var fields = {
+      vardas: v('Vardas'), email: v('email'), telefonas: v('Telefonas'), objektas: v('Objektas'),
+      konstrukcija: konstr, grindys: grind, pastaba: v('Pastaba'),
+      medziagos: form.querySelector('[name="Domina medžiagos montuotojo kainomis"]').checked
+    };
+    var honey = v('_honey');
+    Promise.all(picked.map(function(f){
+      return readB64(f).then(function(d){ return { name: f.name, type: mime(f), data: d }; });
+    })).then(function(files){
+      return fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ fields: fields, files: files, honey: honey }) });
+    }).then(function(r){ return r.json(); }).then(function(j){
+      if (!j || !j.ok) throw new Error((j && j.error) || 'Nepavyko');
+      form.reset(); picked = []; sync(); err.textContent = '';
+      form.querySelectorAll('.f.bad').forEach(function(x){ x.classList.remove('bad'); });
+      var dlg = document.getElementById('thanks'); if (dlg && dlg.showModal) dlg.showModal();
+    }).catch(function(){
+      err.textContent = 'Nepavyko išsiųsti. Bandykite dar kartą arba siųskite projektą el. paštu info@bastel.lt.';
+    }).then(function(){
+      btn.disabled = false; btn.innerHTML = 'Siųsti projektą <span class="arr">→</span>';
+    });
+  }
 
   // padėkos langas po sėkmingo išsiuntimo (FormSubmit grąžina į ?gauta=1)
   if (/[?&]gauta=1/.test(location.search)) {
