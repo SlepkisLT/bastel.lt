@@ -1,648 +1,658 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="lt">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BASTEL — Pažangūs sprendimai nuo uodų</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0e1a0f;
-      --bg2: #141f14;
-      --card: #1a2b1a;
-      --card2: #1f321f;
-      --accent: #7bc67e;
-      --accent2: #4a9e4d;
-      --accent3: #c8f5ca;
-      --text: #f0f7f0;
-      --muted: #8aab8c;
-      --maxw: 1100px;
-      --border: rgba(123,198,126,0.15);
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bastel – elektros instaliacijos sąmatos</title>
+<meta name="description" content="Nepermokėkite už elektros medžiagas. Atsiųskite elektros projektą ir per 24 val. gaukite nepriklausomą medžiagų sąmatą. Nuo 40 €.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3QgaWQ9InRpbGUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iOTYiIGZpbGw9IiMxMTE4MjciLz4KPGcgaWQ9Imljb24iPjxwYXRoIGQ9Ik0xNjMuMzk5OTk5OTk5OTk5OTggMzU4LjhWMTE0LjM5OTk5OTk5OTk5OTk4SDIwOC41OTk5OTk5OTk5OTk5N1YyMzIuMEwyNDEuMCAyMDAuNzk5OTk5OTk5OTk5OThIMzEyLjZMMzUyLjYgMjQwLjc5OTk5OTk5OTk5OTk4VjM2MC4wTDMxMi42IDQwMC4wSDIwNC4yWk0yOTAuNiAzNjEuMiAzMDcuNCAzNDQuNFYyNTYuNEwyOTAuNiAyMzkuNkgyNDguMkwyMDguNTk5OTk5OTk5OTk5OTcgMjc5LjJWMzQ0LjRMMjI1LjM5OTk5OTk5OTk5OTk4IDM2MS4yWiIgZmlsbD0iI0ZGRkZGRiIvPjwvZz4KPC9zdmc+Cg==">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta property="og:title" content="Bastel – elektros instaliacijos sąmatos">
+<meta property="og:description" content="Sąmata per 24 val. nuo projekto gavimo. Nuo 40 €.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --paper:#fafafa; --white:#ffffff; --hair:#ebebeb; --ash:#c9c9c9; --smoke:#a8a8a8;
+  --graphite:#8f8f8f; --stone:#666666; --charcoal:#4d4d4d; --ink:#111827;
+  --green:#297a3a; --green-bg:#eaf4ec; --red:#b42318;
+  --sans:'Archivo', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --ring:0 0 0 1px rgba(0,0,0,.08);
+  --r:6px; --max:1200px; --gut:clamp(16px,4vw,40px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+::selection{background:var(--ink);color:#fff}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+/* label style (replaces mono eyebrows) */
+.eyebrow,.fact b,.num,.tag,label.f,.compare h4,.step .n,.price .from,.step .opt,.hero-meta,.panel-top,.shop-h{
+  font-family:var(--sans);font-stretch:87.5%;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+/* ---------- blueprint frame ---------- */
+.frame{max-width:var(--max);margin:0 auto;border-left:1px solid var(--hair);border-right:1px solid var(--hair);position:relative}
+.band{position:relative;border-top:1px solid var(--hair);padding:clamp(64px,9vw,112px) var(--gut)}
+.band::before,.band::after{content:"";position:absolute;top:-6px;width:11px;height:11px;
+  background:linear-gradient(var(--ash),var(--ash)) center/1px 100% no-repeat,linear-gradient(var(--ash),var(--ash)) center/100% 1px no-repeat}
+.band::before{left:-6px}.band::after{right:-6px}
+@media (max-width:1240px){.band::before,.band::after{display:none}.frame{border-left:0;border-right:0}}
 
-    /* Organic background texture */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 20% 20%, rgba(74,158,77,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 80% 80%, rgba(123,198,126,0.06) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
+/* ---------- type ---------- */
+.eyebrow{font-size:12px;line-height:1.4;color:var(--stone);margin:0 0 16px;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:7px;height:7px;background:var(--ink);clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+h1,h2,h3{margin:0;color:var(--ink);font-stretch:87.5%}
+h1{font-size:clamp(44px,6.8vw,80px);line-height:.98;letter-spacing:-.03em;font-weight:650}
+h2{font-size:clamp(32px,4.4vw,52px);line-height:1.02;letter-spacing:-.025em;font-weight:620;max-width:18ch}
+h3{font-size:21px;line-height:1.2;letter-spacing:-.01em;font-weight:600}
+p{margin:0;color:var(--charcoal)}
+.lead{font-size:clamp(16px,1.6vw,18px);line-height:1.6;max-width:56ch}
+.mono{font-family:var(--mono)}
+.muted{color:var(--stone)}
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      background: rgba(14,26,15,0.88);
-      backdrop-filter: blur(12px);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 32px;
-      z-index: 100;
-      border-bottom: 1px solid var(--border);
-    }
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 20px;border-radius:var(--r);
+  font:600 15px/1 var(--sans);text-decoration:none;border:0;cursor:pointer;transition:background .15s,box-shadow .15s,transform .15s;white-space:nowrap}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#1f2937}
+.btn-ghost{background:var(--white);color:var(--charcoal);box-shadow:0 0 0 1px var(--hair)}
+.btn-ghost:hover{box-shadow:0 0 0 1px var(--ash);color:var(--ink)}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.btn .arr{transition:transform .15s}
+.btn:hover .arr{transform:translateX(3px)}
+.btn-sm{height:36px;padding:0 14px;font-size:14px}
 
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-      font-weight: 900;
-      color: var(--accent);
-      letter-spacing: 2px;
-    }
-    .logo span { color: var(--accent3); font-size: 0.55em; display: block; letter-spacing: 3px; font-weight: 400; line-height: 1; }
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,250,250,.85);backdrop-filter:saturate(1.6) blur(18px);-webkit-backdrop-filter:saturate(1.6) blur(18px);border-bottom:1px solid var(--hair)}
+.nav-in{max-width:var(--max);margin:0 auto;height:64px;padding:0 var(--gut);display:flex;align-items:center;gap:32px}
+.logo{display:flex;align-items:center;color:var(--ink);text-decoration:none}
+.logo svg{height:22px;width:auto}
+.nav-links{display:flex;gap:26px;font-size:15px;font-weight:500}
+.nav-links a{text-decoration:none;color:var(--charcoal)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{margin-left:auto;display:flex;gap:8px;align-items:center}
+@media (max-width:900px){.nav-links{display:none}.nav-mail{display:none}}
 
-    .menu { display: flex; gap: 28px; list-style: none; }
-    .menu a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px; transition: color 0.2s; }
-    .menu a:hover { color: var(--accent); }
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,64px);align-items:center;padding-top:clamp(56px,8vw,104px)}
+.hero h1 .soft{color:var(--smoke)}
+.hero .lead{margin-top:24px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.hero-meta{margin-top:28px;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:12.5px;color:var(--stone)}
+.hero-meta span::before{content:"✓ ";color:var(--green)}
+.wire{height:2px;margin-top:40px;background:linear-gradient(90deg,var(--ink) 0 18%,transparent 18% 20%,var(--ash) 20%);position:relative;max-width:420px}
+.wire::after{content:"";position:absolute;right:-1px;top:-4px;width:10px;height:10px;border:1.5px solid var(--ink);border-radius:50%;background:var(--paper)}
+@media (max-width:960px){.hero{grid-template-columns:1fr}}
 
-    .menu-toggle { display: none; }
-    .hamburger { display: none; font-size: 28px; color: var(--accent); cursor: pointer; }
+/* ---------- estimate panel ---------- */
+.panel{background:var(--white);border-radius:var(--r);box-shadow:var(--ring),0 0 0 6px var(--paper),0 0 0 7px var(--hair);overflow:hidden}
+.panel-top{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--hair);font-size:11.5px;line-height:1;color:var(--stone)}
+.dots{display:flex;gap:6px}.dots i{width:9px;height:9px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--ash)}
+.tag{margin-left:auto;font-size:10.5px;line-height:1;padding:5px 8px;border-radius:999px;box-shadow:0 0 0 1px var(--hair);color:var(--stone)}
+.panel-body{padding:18px 18px 8px;font:400 13px/1.8 var(--mono);color:var(--ink)}
+.ln{display:grid;grid-template-columns:minmax(0,1fr) 4ch 6ch;column-gap:1ch;align-items:baseline;opacity:0;transform:translateY(4px);animation:ln .4s ease forwards;animation-delay:calc(var(--i) * 140ms + 200ms)}
+.ln .k{flex:1;min-width:0;display:flex;gap:8px;overflow:hidden;white-space:nowrap}
+.ln .k::after{content:"";flex:1;border-bottom:1px dotted var(--ash);transform:translateY(-4px);min-width:12px}
+.ln .v{display:contents}
+.ln .v i{font-style:normal;text-align:right;white-space:nowrap}
+.ln .v u{text-decoration:none;text-align:right;white-space:nowrap}
+.ok{color:var(--green)}
+.cmd{color:var(--ink);font-weight:600}
+.ln.plain .k{grid-column:1 / -1}
+.ln.plain .k::after{display:none}
+.sum{border-top:1px solid var(--hair);margin-top:10px;padding:12px 18px 16px;font:400 13px/1.9 var(--mono)}
+.sum .row{display:flex;justify-content:space-between;gap:12px;opacity:0;animation:ln .4s ease forwards;animation-delay:calc(var(--i) * 140ms + 200ms)}
+.sum .strike{color:var(--smoke);text-decoration:line-through}
+.sum .save{color:var(--green);font-weight:600;font-size:14.5px}
+.save-chip{background:var(--green-bg);color:var(--green);padding:1px 8px;margin-right:-8px;border-radius:999px}
+.panel-foot{padding:10px 18px;border-top:1px solid var(--hair);font-size:12px;line-height:1.5;color:var(--graphite)}
+@keyframes ln{to{opacity:1;transform:none}}
+@media (max-width:420px){.panel-body,.sum{font-size:11.8px}}
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      padding: 140px 24px 80px;
-      position: relative;
-    }
+/* ---------- facts strip ---------- */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair)}
+.fact{padding:28px var(--gut);border-right:1px solid var(--hair)}
+.fact:last-child{border-right:0}
+.fact b{display:block;font-size:14px;line-height:1.3;color:var(--ink);margin-bottom:6px}
+.fact span{font-size:15px;color:var(--stone);line-height:1.45;display:block}
+@media (max-width:860px){.facts{grid-template-columns:1fr 1fr}.fact:nth-child(2){border-right:0}.fact:nth-child(-n+2){border-bottom:1px solid var(--hair)}}
 
-    .hero-leaf {
-      position: absolute;
-      font-size: 18rem;
-      opacity: 0.03;
-      pointer-events: none;
-      user-select: none;
-    }
-    .hero-leaf.l1 { top: 10%; left: -4%; transform: rotate(-20deg); }
-    .hero-leaf.l2 { bottom: 5%; right: -2%; transform: rotate(30deg); font-size: 12rem; }
+/* ---------- section head ---------- */
+.head{display:grid;grid-template-columns:1fr 1fr;gap:24px 48px;align-items:end;margin-bottom:48px}
+.head p{max-width:52ch}
+@media (max-width:860px){.head{grid-template-columns:1fr}}
 
-    .hero-badge {
-      display: inline-block;
-      background: rgba(123,198,126,0.12);
-      border: 1px solid var(--border);
-      color: var(--accent);
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 24px;
-    }
+/* ---------- cards ---------- */
+.card{background:var(--white);border-radius:var(--r);box-shadow:var(--ring),0 0 0 2px var(--paper)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.grid3{grid-template-columns:1fr}}
+.pcard{padding:24px;display:flex;flex-direction:column;gap:12px}
+.num{font-size:12px;line-height:1;color:var(--smoke)}
+.pcard .num{margin-bottom:36px}
+.pcard p{font-size:15.5px}
 
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      font-weight: 900;
-      line-height: 1.15;
-      color: var(--text);
-      margin-bottom: 20px;
-      max-width: 780px;
-    }
+/* comparison */
+.compare{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.compare>div{padding:24px 28px}
+.compare>div+div{border-left:1px solid var(--hair);background:linear-gradient(180deg,#fcfdfc,#fff)}
+.compare h4{margin:0 0 16px;font-size:12px;line-height:1;color:var(--stone)}
+.compare ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.compare li{display:flex;gap:12px;font-size:15.5px;color:var(--charcoal);line-height:1.45}
+.compare li::before{font:600 12px/20px var(--mono);flex:0 0 20px;height:20px;border-radius:4px;text-align:center}
+.bad li::before{content:"✕";color:var(--smoke);box-shadow:0 0 0 1px var(--hair)}
+.good li::before{content:"✓";color:var(--green);background:var(--green-bg)}
+.good li{color:var(--ink)}
+@media (max-width:760px){.compare{grid-template-columns:1fr}.compare>div+div{border-left:0;border-top:1px solid var(--hair)}}
 
-    .hero h1 em {
-      color: var(--accent);
-      font-style: normal;
-    }
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr)}
+.step{padding:24px 24px 28px;border-left:1px solid var(--hair);position:relative}
+.step:first-child{border-left:0;padding-left:0}
+.step .n{font-size:12px;line-height:1;color:var(--stone);display:flex;align-items:center;gap:10px;margin-bottom:40px}
+.step .n i{width:30px;height:30px;display:grid;place-items:center;font-style:normal;font-size:13px;background:var(--white);box-shadow:var(--ring);clip-path:polygon(25% 0,75% 0,100% 25%,100% 75%,75% 100%,25% 100%,0 75%,0 25%);color:var(--ink)}
+.step.dark .n i{background:var(--ink);color:#fff;box-shadow:none}
+.step h3{margin-bottom:8px}
+.step p{font-size:15.5px}
+.step .opt{font-size:10.5px;line-height:1;color:var(--stone);margin-left:auto;padding:4px 7px;border-radius:999px;box-shadow:0 0 0 1px var(--hair)}
+@media (max-width:960px){.steps{grid-template-columns:1fr 1fr}.step:nth-child(3){border-left:0;padding-left:0}.step:nth-child(n+3){border-top:1px solid var(--hair)}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}.step{border-left:0;padding-left:0}.step+.step{border-top:1px solid var(--hair)}.step .n{margin-bottom:20px}}
 
-    .hero p {
-      color: var(--muted);
-      font-size: 1.1rem;
-      max-width: 520px;
-      margin: 0 auto 36px;
-      font-weight: 300;
-    }
+/* ---------- inverted ---------- */
+.invert{background:var(--ink);color:#fff;border-radius:var(--r);display:grid;grid-template-columns:1.1fr .9fr;gap:40px;padding:clamp(28px,5vw,56px);overflow:hidden;position:relative}
+.invert::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px;mask-image:linear-gradient(90deg,transparent 30%,#000);-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000);pointer-events:none}
+.invert>*{position:relative}
+.invert h2{color:#fff}
+.invert p{color:#c9cdd4}
+.invert .eyebrow{color:#9aa1ab}.invert .eyebrow::before{background:#fff}
+.ilist{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:10px;font-size:15.5px;color:#e5e7eb}
+.ilist li::before{content:"✓  ";color:#6fcf87}
+.shop{background:#0b1220;border-radius:var(--r);box-shadow:0 0 0 1px rgba(255,255,255,.1);font:400 13px/1.5 var(--mono);align-self:center}
+.shop-h{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08);font-size:11px;color:#8b93a1}
+.shop-r{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.06);color:#e5e7eb}
+.shop-r small{grid-column:1;color:#8b93a1;font-size:11.5px}
+.shop-r em{grid-row:1 / span 2;grid-column:2;align-self:center;font:600 11px/1 var(--sans);font-stretch:87.5%;font-style:normal;letter-spacing:.06em;color:#6fcf87;background:rgba(111,207,135,.1);padding:5px 8px;border-radius:999px;text-transform:uppercase}
+.shop-f{padding:12px 16px;color:#8b93a1;font-size:11.5px}
+@media (max-width:900px){.invert{grid-template-columns:1fr}}
 
-    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+/* ---------- pricing ---------- */
+.price-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.price{padding:32px;position:relative}
+.price .from{font-size:12px;line-height:1;color:var(--stone)}
+.price .big{font-size:clamp(60px,8vw,92px);font-weight:650;font-stretch:87.5%;letter-spacing:-.03em;line-height:1;margin:10px 0 6px;color:var(--ink)}
+.price .big small{font-size:.36em;font-weight:500;letter-spacing:0;color:var(--stone);margin-left:8px}
+.price ul{list-style:none;padding:0;margin:24px 0 28px;display:grid;gap:10px;border-top:1px solid var(--hair);padding-top:20px}
+.price li{display:flex;gap:10px;font-size:15.5px;color:var(--ink)}
+.price li::before{content:"✓";font:600 12px/20px var(--mono);color:var(--green);background:var(--green-bg);flex:0 0 20px;height:20px;text-align:center;border-radius:4px}
+.price .btn{width:100%}
+.price .ribbon{position:absolute;top:16px;right:16px}
+@media (max-width:900px){.price-wrap{grid-template-columns:1fr}}
 
-    .cta {
-      display: inline-block;
-      background: var(--accent2);
-      color: #fff;
-      padding: 14px 28px;
-      border-radius: 8px;
-      font-weight: 500;
-      text-decoration: none;
-      letter-spacing: 0.3px;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .cta:hover { background: var(--accent); transform: translateY(-1px); }
+/* ---------- upload ---------- */
+.up-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,64px);align-items:start}
+.route{margin-top:32px;padding:0;list-style:none;display:grid;font-size:15px}
+.route li{display:flex;gap:14px;padding:12px 0;border-top:1px dashed var(--ash);color:var(--charcoal)}
+.route li:last-child{border-bottom:1px dashed var(--ash)}
+.route b{color:var(--ink);font:600 13px/1.6 var(--mono);min-width:24px}
+.alt{margin-top:24px;font-size:15.5px}
+.alt a{font-weight:600;color:var(--ink);text-underline-offset:3px}
+form.card{padding:24px;display:grid;gap:18px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.row2{grid-template-columns:1fr}}
+label.f,fieldset.f legend{display:grid;gap:7px;font-size:11.5px;line-height:1;color:var(--stone)}
+fieldset.f{border:0;margin:0;padding:0;min-width:0}
+fieldset.f legend{padding:0;margin-bottom:7px;font-family:var(--sans);font-stretch:87.5%;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.in{width:100%;height:44px;padding:0 12px;border-radius:var(--r);border:0;background:var(--white);box-shadow:0 0 0 1px var(--hair);font:400 15.5px/1.4 var(--sans);font-stretch:100%;color:var(--ink);text-transform:none;letter-spacing:0;transition:box-shadow .15s;-webkit-appearance:none;appearance:none}
+textarea.in{height:auto;min-height:104px;padding:10px 12px;resize:vertical}
+select.in{background-image:linear-gradient(45deg,transparent 50%,var(--stone) 50%),linear-gradient(135deg,var(--stone) 50%,transparent 50%);background-position:calc(100% - 17px) 19px,calc(100% - 12px) 19px;background-size:5px 5px;background-repeat:no-repeat;padding-right:32px}
+.in:hover{box-shadow:0 0 0 1px var(--ash)}
+.in:focus{outline:none;box-shadow:0 0 0 1px var(--ink),0 0 0 4px rgba(17,24,39,.08)}
+.in::placeholder{color:var(--smoke)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:var(--r);box-shadow:0 0 0 1px var(--hair);background:var(--white);overflow:hidden}
+.seg label{position:relative;cursor:pointer}
+.seg label+label{box-shadow:-1px 0 0 var(--hair)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 10px;font:500 15px/1.2 var(--sans);color:var(--charcoal);text-align:center;transition:background .15s,color .15s}
+.seg span::before{content:"";width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--ash);flex:0 0 14px;transition:box-shadow .15s}
+.seg label:hover span{background:var(--paper)}
+.seg input:checked+span{background:var(--ink);color:#fff}
+.seg input:checked+span::before{box-shadow:inset 0 0 0 4px #fff}
+.seg input:focus-visible+span{outline:2px solid var(--ink);outline-offset:-4px}
+.f.bad .seg{box-shadow:0 0 0 1px var(--red)}
+.drop{position:relative;border-radius:var(--r);padding:26px 16px;text-align:center;cursor:pointer;
+  background:repeating-linear-gradient(90deg,var(--ash) 0 6px,transparent 6px 10px) top/100% 1px no-repeat,
+             repeating-linear-gradient(90deg,var(--ash) 0 6px,transparent 6px 10px) bottom/100% 1px no-repeat,
+             repeating-linear-gradient(0deg,var(--ash) 0 6px,transparent 6px 10px) left/1px 100% no-repeat,
+             repeating-linear-gradient(0deg,var(--ash) 0 6px,transparent 6px 10px) right/1px 100% no-repeat,var(--paper);
+  transition:background-color .15s}
+.drop:hover,.drop.over{background-color:#f1f5f2}
+.drop.over{box-shadow:0 0 0 1px var(--green)}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.drop .ic{width:40px;height:40px;margin:0 auto 10px;display:grid;place-items:center;background:var(--white);box-shadow:var(--ring);clip-path:polygon(25% 0,75% 0,100% 25%,100% 75%,75% 100%,25% 100%,0 75%,0 25%)}
+.drop strong{display:block;font-weight:600;font-size:16px}
+.drop span{display:block;font-size:13px;color:var(--stone);margin-top:4px}
+.files{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.files:empty{display:none}
+.files li{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--r);box-shadow:0 0 0 1px var(--hair);background:var(--white);font:400 13px/1.3 var(--mono)}
+.files li .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
+.files li .sz{color:var(--stone)}
+.files li button{border:0;background:none;color:var(--stone);cursor:pointer;font:500 15px/1 var(--mono);padding:2px 4px}
+.files li button:hover{color:var(--red)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--charcoal);cursor:pointer}
+.check input{width:16px;height:16px;margin:3px 0 0;accent-color:var(--ink)}
+.err{font-size:14px;line-height:1.4;color:var(--red);font-weight:500}
+.err:empty{display:none}
+.fine{font-size:13px;line-height:1.6;color:var(--graphite)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+@media (max-width:960px){.up-wrap{grid-template-columns:1fr}}
 
-    .cta-ghost {
-      display: inline-block;
-      border: 1px solid var(--border);
-      color: var(--accent);
-      padding: 14px 28px;
-      border-radius: 8px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .cta-ghost:hover { background: rgba(123,198,126,0.07); border-color: var(--accent); }
+/* ---------- faq ---------- */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+.faq details{border-top:1px solid var(--hair)}
+.faq details:last-child{border-bottom:1px solid var(--hair)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 0;display:flex;justify-content:space-between;gap:16px;font-size:18px;font-weight:600;font-stretch:87.5%}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 20px/1 var(--mono);color:var(--stone);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 20px;max-width:60ch;font-size:15.5px}
+@media (max-width:860px){.faq{grid-template-columns:1fr;gap:24px}}
 
-    /* STATS BAR */
-    .stats {
-      background: var(--card);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 28px 32px;
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
-    }
+/* ---------- cta + footer ---------- */
+.cta{text-align:center;display:grid;justify-items:center;gap:20px}
+.cta h2{max-width:20ch}
+.foot{border-top:1px solid var(--hair);padding:32px var(--gut) 40px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;font-size:14px;color:var(--stone)}
+.foot .logo svg{height:18px}
+.foot a{text-decoration:none}.foot a:hover{color:var(--ink)}
 
-    .stat { text-align: center; }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    .stat-label { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.5px; }
+/* ---------- thank-you dialog ---------- */
+dialog.thanks{border:0;padding:0;border-radius:var(--r);max-width:min(480px,calc(100vw - 32px));width:100%;background:var(--white);color:var(--ink);box-shadow:var(--ring),0 0 0 6px var(--paper),0 0 0 7px var(--hair),0 24px 60px rgba(17,24,39,.18)}
+dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
+.thanks-in{padding:32px 28px}
+.thanks .okb{width:42px;height:42px;display:grid;place-items:center;background:var(--green-bg);color:var(--green);font:600 18px/1 var(--mono);clip-path:polygon(25% 0,75% 0,100% 25%,100% 75%,75% 100%,25% 100%,0 75%,0 25%);margin-bottom:20px}
+.thanks h2{font-size:clamp(30px,6vw,40px);margin-bottom:10px}
+.thanks ol{list-style:none;padding:0;margin:22px 0;border-top:1px dashed var(--ash);font-size:15px}
+.thanks li{display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--ash);color:var(--charcoal)}
+.thanks li b{font:600 13px/1.6 var(--mono);color:var(--ink)}
+.thanks .btn{width:100%}
 
-    /* SECTIONS */
-    .container {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 80px 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-label {
-      font-size: 0.75rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent2);
-      margin-bottom: 12px;
-    }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-
-    h2 em { color: var(--accent); font-style: normal; }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 540px;
-      margin-bottom: 48px;
-      font-weight: 300;
-    }
-
-    /* PRODUCT GRID */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 28px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .card:hover { border-color: rgba(123,198,126,0.35); transform: translateY(-3px); }
-
-    .card-icon {
-      font-size: 2.2rem;
-      margin-bottom: 16px;
-    }
-
-    .card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .card p { color: var(--muted); font-size: 0.95rem; font-weight: 300; }
-
-    .card-tag {
-      display: inline-block;
-      margin-top: 14px;
-      font-size: 0.75rem;
-      color: var(--accent);
-      background: rgba(123,198,126,0.1);
-      padding: 4px 10px;
-      border-radius: 4px;
-      letter-spacing: 0.5px;
-    }
-
-    /* HOW IT WORKS */
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; }
-
-    .step {
-      padding: 32px 24px;
-      border-right: 1px solid var(--border);
-      position: relative;
-    }
-    .step:last-child { border-right: none; }
-
-    .step-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 900;
-      color: rgba(123,198,126,0.15);
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-
-    .step h3 { font-size: 1rem; font-weight: 500; margin-bottom: 8px; color: var(--accent3); }
-    .step p { font-size: 0.9rem; color: var(--muted); font-weight: 300; }
-
-    /* WHY SECTION */
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .why-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
-
-    .why-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .why-icon {
-      width: 40px; height: 40px;
-      background: rgba(123,198,126,0.1);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-
-    .why-text h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 4px; color: var(--text); }
-    .why-text p { font-size: 0.875rem; color: var(--muted); font-weight: 300; }
-
-    .why-visual {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px;
-      text-align: center;
-    }
-
-    .why-visual-emoji { font-size: 6rem; display: block; margin-bottom: 16px; }
-    .why-visual p { color: var(--muted); font-size: 0.9rem; font-style: italic; }
-
-    /* CONTACT / FORM */
-    .form-section {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 48px;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    form { display: flex; flex-direction: column; gap: 16px; }
-
-    label.note { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.5px; margin-bottom: -8px; }
-
-    input[type=text], input[type=email], textarea {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      padding: 12px 16px;
-      border-radius: 8px;
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      transition: border-color 0.2s;
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent2);
-    }
-
-    textarea { min-height: 120px; resize: vertical; }
-
-    .btn {
-      background: var(--accent2);
-      color: #fff;
-      border: none;
-      padding: 14px;
-      border-radius: 8px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s;
-      letter-spacing: 0.3px;
-    }
-    .btn:hover { background: var(--accent); }
-
-    /* CONTACT INFO */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-bottom: 48px;
-    }
-
-    .contact-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
-    }
-
-    .contact-card h3 { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
-    .contact-card p { color: var(--text); font-weight: 400; }
-    .contact-card a { color: var(--accent); text-decoration: none; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 32px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.85rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .note { font-size: 0.85rem; color: var(--muted); }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { padding: 12px 20px; }
-      .menu { display: none; }
-      .hamburger { display: block; }
-      .menu-toggle:checked + .hamburger + .menu {
-        display: flex; flex-direction: column;
-        position: absolute; left: 0; right: 0; top: 56px;
-        background: rgba(14,26,15,0.97);
-        padding: 16px 24px;
-        border-bottom: 1px solid var(--border);
-      }
-      .why-grid { grid-template-columns: 1fr; }
-      .why-visual { display: none; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: 1fr; }
-      .step { border-right: none; border-bottom: 1px solid var(--border); }
-      .step:last-child { border-bottom: none; }
-      .stats { gap: 32px; }
-      .form-section { padding: 28px 20px; }
-    }
-  </style>
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ln,.sum .row{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">
-    BASTEL
-    <span>uodų kontrolė</span>
-  </div>
-  <input id="menu-toggle" class="menu-toggle" type="checkbox">
-  <label for="menu-toggle" class="hamburger">☰</label>
-  <ul class="menu" role="navigation">
-    <li><a href="#home">Pradžia</a></li>
-    <li><a href="#produktai">Produktai</a></li>
-    <li><a href="#kaip-veikia">Kaip veikia</a></li>
-    <li><a href="#kontaktai">Kontaktai</a></li>
-    <li><a href="#uzklausos">Užklausa</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<header id="home" class="hero">
-  <div class="hero-leaf l1">🌿</div>
-  <div class="hero-leaf l2">🌱</div>
-  <div>
-    <div class="hero-badge">Lietuva · 2025</div>
-    <h1>Mėgaukitės lauku —<br><em>be uodų</em></h1>
-    <p>Pažangios, mokslu pagrįstos uodų kontrolės sistemos namams, sodyboms ir verslui. Be kvapo. Be chemijos. Be kompromisų.</p>
-    <div class="hero-btns">
-      <a href="#produktai" class="cta">Peržiūrėti produktus</a>
-      <a href="#uzklausos" class="cta-ghost">Gauti konsultaciją</a>
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="#" aria-label="Bastel – pradžia">
+      <svg viewBox="240 178 544 148" role="img" aria-hidden="true"><path fill="currentColor" d="M246.665 300.43V184.34H268.135V240.2L283.525 225.38H317.535L336.535 244.38V301.0L317.535 320.0H266.045ZM307.085 301.57 315.065 293.59V251.79L307.085 243.81H286.945L268.135 262.62V293.59L276.115 301.57Z M356.485 303.09V280.67L373.395 263.95H422.225V249.89L415.195 242.86H385.365L378.335 249.89V255.97H357.245V244.95L376.625 225.38H423.935L443.315 244.95V320.0H423.745V305.37L408.545 320.0H373.395ZM406.455 303.09 422.225 287.89V279.91H383.655L377.575 285.8V297.39L383.275 303.09Z M462.315 302.33V290.74H483.405V296.82L488.725 302.33H521.025L526.345 296.82V286.56L520.835 281.05H479.985L463.075 263.95V242.67L480.365 225.38H528.055L545.535 243.05V254.64H524.445V248.56L519.125 243.05H489.485L484.165 248.56V258.06L489.675 263.57H530.335L547.435 280.86V302.71L530.145 320.0H479.795Z M575.935 301.19V243.62H558.835V225.38H576.315V194.6H597.405V225.38H626.475V243.62H597.405V294.35L604.815 301.76H626.475V320.0H594.745Z M642.625 301.19V244.38L661.435 225.38H712.925L732.115 244.38V279.72H664.095V294.92L671.315 302.14H703.805L710.645 295.11V289.41H731.925V301.57L713.495 320.0H661.245ZM710.645 263.95V250.84L703.235 243.24H671.505L664.095 250.84V263.95Z M754.915 184.34H776.385V320.0H754.915Z"/></svg>
+    </a>
+    <nav class="nav-links" aria-label="Pagrindinis meniu">
+      <a href="#problema">Kodėl Bastel</a>
+      <a href="#kaip">Kaip veikia</a>
+      <a href="#kaina">Kaina</a>
+      <a href="#duk">DUK</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm nav-mail" href="mailto:info@bastel.lt">info@bastel.lt</a>
+      <a class="btn btn-dark btn-sm" href="#ikelti">Įkelti projektą</a>
     </div>
   </div>
 </header>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat">
-    <div class="stat-num">95%</div>
-    <div class="stat-label">Efektyvumas moksliniais tyrimais</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">0</div>
-    <div class="stat-label">Kenksmingų cheminių medžiagų</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">24/7</div>
-    <div class="stat-label">Apsauga be pertraukų</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">EU</div>
-    <div class="stat-label">Sertifikuoti produktai</div>
-  </div>
-</div>
+<main class="frame">
 
-<!-- PRODUKTAI -->
-<section id="produktai" class="container">
-  <div class="section-label">Produktų linija</div>
-  <h2>Sprendimai kiekvienai <em>situacijai</em></h2>
-  <p class="subtitle">Parenkame optimalų sprendimą pagal jūsų erdvę, poreikį ir biudžetą.</p>
+  <!-- HERO -->
+  <section class="band hero" style="border-top:0">
+    <div>
+      <p class="eyebrow">Elektros instaliacijos sąmatos</p>
+      <h1>Nepermokėkite už elektros <span class="soft">medžiagas.</span></h1>
+      <p class="lead">Prieš pradėdami įrengti būstą sužinokite, kiek ir kokių medžiagų iš tikrųjų reikia ir kiek jos turėtų kainuoti. Atsiųskite elektros projektą – sąmatą gausite per&nbsp;24&nbsp;valandas.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-dark" href="#ikelti">Įkelti projektą <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="#kaip">Kaip tai veikia</a>
+      </div>
+      <div class="hero-meta"><span>Nuo 40 €</span><span>Per 24 val.</span><span>Be įsipareigojimų</span></div>
+      <div class="wire" aria-hidden="true"></div>
+    </div>
 
-  <div class="grid">
-    <div class="card">
-      <div class="card-icon">🪤</div>
-      <h3>CO₂ spąstai</h3>
-      <p>Imituoja žmogaus kvapą ir traukia uodus į spąstus. Veikia iki 40 m² erdvėje. Idealūs terasoms ir verandoms.</p>
-      <span class="card-tag">B2C · B2B</span>
+    <div class="panel" aria-label="Sąmatos pavyzdys">
+      <div class="panel-top"><span class="dots"><i></i><i></i><i></i></span> Sąmata · butas 86 m² <span class="tag">Pavyzdys</span></div>
+      <div class="panel-body">
+        <div class="ln plain" style="--i:0"><span class="k"><span class="cmd">▸ bastel sąmata</span></span></div>
+        <div class="ln" style="--i:1"><span class="k"><span class="ok">✓</span> Šviestuvai</span><span class="v"><i>34</i><u>vnt.</u></span></div>
+        <div class="ln" style="--i:2"><span class="k"><span class="ok">✓</span> Kištukiniai lizdai</span><span class="v"><i>41</i><u>vnt.</u></span></div>
+        <div class="ln" style="--i:3"><span class="k"><span class="ok">✓</span> Jungikliai</span><span class="v"><i>18</i><u>vnt.</u></span></div>
+        <div class="ln" style="--i:4"><span class="k"><span class="ok">✓</span> Kabelis 3×1,5 mm²</span><span class="v"><i>286</i><u>m</u></span></div>
+        <div class="ln" style="--i:5"><span class="k"><span class="ok">✓</span> Kabelis 3×2,5 mm²</span><span class="v"><i>318</i><u>m</u></span></div>
+        <div class="ln" style="--i:6"><span class="k"><span class="ok">✓</span> Montažinės medžiagos</span><span class="v"><i>1</i><u>kompl.</u></span></div>
+        <div class="ln" style="--i:7"><span class="k"><span class="ok">✓</span> Elektros skydas</span><span class="v"><i>1</i><u>kompl.</u></span></div>
+      </div>
+      <div class="sum">
+        <div class="row" style="--i:8"><span class="muted">Montuotojo pasiūlymas</span><span class="strike">2 960 €</span></div>
+        <div class="row" style="--i:9"><span>Medžiagos pagal sąmatą</span><span>2 140 €</span></div>
+        <div class="row" style="--i:10"><span class="save">Skirtumas</span><span class="save save-chip">−820 €</span></div>
+      </div>
+      <div class="panel-foot">Iliustracinis pavyzdys. Kiekiai ir kainos priklauso nuo jūsų projekto.</div>
     </div>
-    <div class="card">
-      <div class="card-icon">💡</div>
-      <h3>UV + vakuuminiai spąstai</h3>
-      <p>Traukia uodus UV šviesa, absorbuoja ventiliatoriumi. Tinkami vidaus patalpoms — be chemijos, be triukšmo.</p>
-      <span class="card-tag">Vidaus patalpos</span>
-    </div>
-    <div class="card">
-      <div class="card-icon">🌿</div>
-      <h3>Biologiniai larvicidai</h3>
-      <p>Bti pagrindu — naikina uodų lervytes vandens telkiniuose. Saugūs žmonėms, gyvūnams ir aplinkai.</p>
-      <span class="card-tag">Sodybos · Tvenkiniai</span>
-    </div>
-    <div class="card">
-      <div class="card-icon">🏡</div>
-      <h3>Automatinės misting sistemos</h3>
-      <p>Programuojama sistema purškia natūraliais preparatais pagal grafiką. Apsaugo didelius plotus — kiemas, sodas, terasa.</p>
-      <span class="card-tag">Premium · Instaliacija</span>
-    </div>
+  </section>
+
+  <!-- FACTS -->
+  <div class="facts">
+    <div class="fact"><b>24 val.</b><span>nuo projekto gavimo iki sąmatos</span></div>
+    <div class="fact"><b>Nuo 40 €</b><span>už vieno objekto sąmatą</span></div>
+    <div class="fact"><b>1 failas</b><span>PDF, DWG ar nuotrauka – to pakanka</span></div>
+    <div class="fact"><b>Montuotojo kainos</b><span>medžiagoms, jei jų prireiks</span></div>
   </div>
-</section>
 
-<!-- KAIP VEIKIA -->
-<section id="kaip-veikia" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-  <div class="container" style="padding-bottom: 40px;">
-    <div class="section-label">Procesas</div>
-    <h2>Kaip tai <em>veikia</em></h2>
-    <p class="subtitle">Paprasta, greita ir efektyvu.</p>
-    <div class="steps" style="border: 1px solid var(--border); border-radius: 14px; overflow: hidden;">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3>Konsultacija</h3>
-        <p>Aptariame jūsų situaciją — erdvės dydis, uodų intensyvumas, poreikiai.</p>
+  <!-- PROBLEM -->
+  <section class="band" id="problema">
+    <div class="head">
+      <div>
+        <p class="eyebrow">Problema</p>
+        <h2>Kai medžiagas perka montuotojas, permoka užsakovas.</h2>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h3>Parinkimas</h3>
-        <p>Rekomenduojame tinkamiausią produktą ar sistemą pagal konkrečią situaciją.</p>
+      <p class="lead">Dažniausiai elektrikas pats perka medžiagas ir pateikia vieną bendrą sumą. Užsakovas nemato, kiek kainuoja kabelis, dėžutės ar automatai, ir neturi su kuo palyginti.</p>
+    </div>
+    <div class="grid3">
+      <article class="card pcard"><span class="num">01</span><h3>Antkainis medžiagoms</h3><p>Medžiagos perkamos montuotojo kainomis, o užsakovui perparduodamos su antkainiu.</p></article>
+      <article class="card pcard"><span class="num">02</span><h3>Per daug medžiagų</h3><p>Kabeliai, dėžutės ir lizdai užsakomi „su atsarga“. Tai, kas objekte nepanaudojama, vis tiek būna apmokėta.</p></article>
+      <article class="card pcard"><span class="num">03</span><h3>Nėra su kuo palyginti</h3><p>Be nepriklausomos sąmatos sunku įvertinti, ar pasiūlyta suma pagrįsta, ir dėl jos derėtis.</p></article>
+    </div>
+    <div class="card compare">
+      <div class="bad">
+        <h4>Be sąmatos</h4>
+        <ul>
+          <li>Viena bendra suma be detalių</li>
+          <li>Kiekiai „iš akies“, su atsarga</li>
+          <li>Medžiagos su perpardavimo antkainiu</li>
+          <li>Nepanaudotos medžiagos lieka apmokėtos</li>
+        </ul>
       </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3>Pristatymas</h3>
-        <p>Pristatome produktą su aiškiomis naudojimo instrukcijomis.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <h3>Rezultatas</h3>
-        <p>Mėgaukitės lauku be uodų — nuo pirmos nakties.</p>
+      <div class="good">
+        <h4>Su Bastel sąmata</h4>
+        <ul>
+          <li>Kiekvienos medžiagos kiekis pagal jūsų projektą</li>
+          <li>Kabelių metražas pagal realias trasas</li>
+          <li>Rinkos kainos ir bendra medžiagų suma</li>
+          <li>Galite palyginti montuotojo pasiūlymą arba pirkti patys</li>
+        </ul>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- KODĖL BASTEL -->
-<section class="container">
-  <div class="section-label">Privalumai</div>
-  <h2>Kodėl <em>Bastel</em>?</h2>
-  <div class="why-grid">
-    <ul class="why-list">
-      <li class="why-item">
-        <div class="why-icon">🔬</div>
-        <div class="why-text">
-          <h4>Moksliniai sprendimai</h4>
-          <p>Tik produktai su įrodyta efektyvumo studijomis — ne marketingo pažadai.</p>
+  <!-- HOW -->
+  <section class="band" id="kaip">
+    <div class="head">
+      <div>
+        <p class="eyebrow">Kaip tai veikia</p>
+        <h2>Nuo projekto iki sąmatos – per 24 valandas.</h2>
+      </div>
+      <p class="lead">Jokių susitikimų ar apžiūrų. Užtenka elektros projekto, kurį jau turite iš projektuotojo ar interjero dizainerio.</p>
+    </div>
+    <div class="steps">
+      <div class="step dark"><div class="n"><i>1</i>Žingsnis</div><h3>Atsiųskite projektą</h3><p>Įkelkite jį svetainėje arba atsiųskite el. paštu <a href="mailto:info@bastel.lt">info@bastel.lt</a>.</p></div>
+      <div class="step"><div class="n"><i>2</i>Žingsnis</div><h3>Sužinokite kainą</h3><p>Pasakysime, kiek kainuos jūsų objekto sąmata. Kaina nuo 40 €, be įsipareigojimų.</p></div>
+      <div class="step"><div class="n"><i>3</i>Žingsnis</div><h3>Gaukite sąmatą</h3><p>Per 24 val. nuo projekto gavimo – medžiagų sąrašas su kiekiais, kainomis ir bendra suma.</p></div>
+      <div class="step"><div class="n"><i>4</i>Žingsnis <span class="opt">Nebūtina</span></div><h3>Pirkite pigiau</h3><p>Jei reikia, pasiūlysime, kur medžiagas įsigyti montuotojo kainomis.</p></div>
+    </div>
+  </section>
+
+  <!-- MATERIALS -->
+  <section class="band" id="medziagos">
+    <div class="invert">
+      <div>
+        <p class="eyebrow">Papildomai</p>
+        <h2>Medžiagos montuotojo kainomis.</h2>
+        <p class="lead" style="margin-top:20px">Jei prireiks, pasiūlysime, kur įsigyti sąmatoje nurodytas medžiagas tomis kainomis, kuriomis jas perka montuotojai. Perkate tiek, kiek reikia, ir tiksliai žinote, už ką mokate.</p>
+        <ul class="ilist">
+          <li>Tas pats sąrašas, kaip sąmatoje</li>
+          <li>Kainos, kurios paprastai taikomos tik meistrams</li>
+          <li>Apsauga nuo nesąžiningų antkainių</li>
+        </ul>
+      </div>
+      <div class="shop" aria-hidden="true">
+        <div class="shop-h"><span>Medžiagų sąrašas</span><span>Kiekis</span></div>
+        <div class="shop-r">Kabelis 3×1,5 mm² <small>286 m · pagal trasas</small><em>Montuotojo kaina</em></div>
+        <div class="shop-r">Kabelis 3×2,5 mm² <small>318 m · pagal trasas</small><em>Montuotojo kaina</em></div>
+        <div class="shop-r">Kištukiniai lizdai <small>41 vnt.</small><em>Montuotojo kaina</em></div>
+        <div class="shop-r">Elektros skydas <small>1 kompl.</small><em>Montuotojo kaina</em></div>
+        <div class="shop-f">+ šviestuvai, jungikliai, montažinės medžiagos · tikslus kiekis, be atsargos „dėl viso pikto“</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE -->
+  <section class="band" id="kaina">
+    <div class="price-wrap">
+      <div>
+        <p class="eyebrow">Kaina</p>
+        <h2>Viena sąmata – nuo 40 €.</h2>
+        <p class="lead" style="margin-top:20px">Tiksli kaina priklauso nuo projekto dydžio. Ją pasakysime gavę projektą, dar prieš pradėdami darbą. Sąmata apsaugo nuo permokėjimo ir nuo medžiagų, kurios objekte taip ir liktų nepanaudotos.</p>
+      </div>
+      <div class="card price">
+        <span class="tag ribbon">1 objektas</span>
+        <div class="from">Kaina</div>
+        <div class="big">40 €<small>ir daugiau</small></div>
+        <p class="muted" style="font-size:15.5px">Vienkartinis mokestis, be abonementų.</p>
+        <ul>
+          <li>Sąmata per 24 val. nuo projekto gavimo</li>
+          <li>Medžiagų sąrašas su kiekiais ir kainomis</li>
+          <li>Bendra medžiagų suma</li>
+          <li>Patarimas, kur pirkti montuotojo kainomis</li>
+        </ul>
+        <a class="btn btn-dark" href="#ikelti">Įkelti projektą <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPLOAD -->
+  <section class="band" id="ikelti">
+    <div class="up-wrap">
+      <div>
+        <p class="eyebrow">Įkelkite projektą</p>
+        <h2>Atsiųskite projektą – suskaičiuosime už jus.</h2>
+        <p class="lead" style="margin-top:20px">Įkelkite elektros projektą ir, jei norite, parašykite pastabą. Atsakysime jūsų nurodytu el. paštu.</p>
+        <ol class="route">
+          <li><b>01</b>Įkeliate projektą ir atsakote į kelis klausimus</li>
+          <li><b>02</b>Projektas su priedais ateina į info@bastel.lt</li>
+          <li><b>03</b>Gaunate sąmatos kainą, o sąmatą – per 24 val.</li>
+        </ol>
+        <p class="alt">Patogiau el. paštu? Rašykite <a href="mailto:info@bastel.lt?subject=Projektas%20s%C4%85matai">info@bastel.lt</a></p>
+      </div>
+
+      <form class="card" id="upload" action="https://formsubmit.co/info@bastel.lt" method="POST" enctype="multipart/form-data" novalidate>
+        <input type="hidden" name="_subject" value="Naujas projektas sąmatai – bastel.lt">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="">
+        <input type="hidden" name="_autoresponse" value="Ačiū! Gavome jūsų projektą. Netrukus atsiųsime sąmatos kainą, o pačią sąmatą – per 24 valandas. Bastel, info@bastel.lt">
+        <div class="hp" aria-hidden="true"><input type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+
+        <div class="drop" id="drop">
+          <input type="file" id="file" accept=".pdf,.dwg,.dxf,.jpg,.jpeg,.png,.heic,.zip" multiple aria-label="Pasirinkite projekto failus">
+          <div class="ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#111827" stroke-width="1.5"><path d="M8 11V2M4.5 5.5 8 2l3.5 3.5M2 11v3h12v-3"/></svg></div>
+          <strong>Nutempkite projektą čia arba pasirinkite failą</strong>
+          <span>PDF · DWG · DXF · JPG · PNG · ZIP — iki 10 MB</span>
         </div>
-      </li>
-      <li class="why-item">
-        <div class="why-icon">🌱</div>
-        <div class="why-text">
-          <h4>Saugūs šeimai ir gamtai</h4>
-          <p>Be kenksmingų cheminių medžiagų. Saugūs vaikams, augintiniams ir bičių šeimoms.</p>
+        <ul class="files" id="files"></ul>
+        <div id="fileInputs" hidden></div>
+
+        <div class="row2">
+          <fieldset class="f" id="fs-konstr">
+            <legend>Pastato konstrukcija *</legend>
+            <div class="seg">
+              <label><input type="radio" name="Konstrukcija" value="Mūrinis" required><span>Mūrinis</span></label>
+              <label><input type="radio" name="Konstrukcija" value="Karkasinis"><span>Karkasinis</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="f" id="fs-grindys">
+            <legend>Grindys *</legend>
+            <div class="seg">
+              <label><input type="radio" name="Grindys" value="Jau išlietos" required><span>Jau išlietos</span></label>
+              <label><input type="radio" name="Grindys" value="Dar neišlietos"><span>Dar neišlietos</span></label>
+            </div>
+          </fieldset>
         </div>
-      </li>
-      <li class="why-item">
-        <div class="why-icon">🇪🇺</div>
-        <div class="why-text">
-          <h4>ES sertifikuoti produktai</h4>
-          <p>Visi produktai atitinka Europos Sąjungos reikalavimus ir standartus.</p>
+
+        <div class="row2">
+          <label class="f">Vardas<input class="in" name="Vardas" autocomplete="name" placeholder="Jūsų vardas"></label>
+          <label class="f">El. paštas *<input class="in" type="email" name="email" autocomplete="email" required placeholder="vardas@pastas.lt"></label>
         </div>
-      </li>
-      <li class="why-item">
-        <div class="why-icon">💬</div>
-        <div class="why-text">
-          <h4>Asmeninė konsultacija</h4>
-          <p>Padedame išrinkti tinkamą sprendimą — ne parduodame brangiausią.</p>
+        <div class="row2">
+          <label class="f">Telefonas<input class="in" type="tel" name="Telefonas" autocomplete="tel" placeholder="+370"></label>
+          <label class="f">Objektas
+            <select class="in" name="Objektas">
+              <option>Namas</option><option>Butas</option><option>Kotedžas</option><option>Komercinės patalpos</option><option>Kita</option>
+            </select>
+          </label>
         </div>
-      </li>
-    </ul>
-    <div class="why-visual">
-      <span class="why-visual-emoji">🌿</span>
-      <p>Gamta + technologija =<br>efektyvi uodų kontrolė</p>
+        <label class="f">Pastaba<textarea class="in" name="Pastaba" placeholder="Pvz., šviestuvai jau nupirkti, skaičiuoti tik kabelius ir instaliacijos medžiagas."></textarea></label>
+        <label class="check"><input type="checkbox" name="Domina medžiagos montuotojo kainomis" value="Taip"> Domina medžiagų įsigijimas montuotojo kainomis</label>
+        <p class="err" id="err" role="alert"></p>
+        <button class="btn btn-dark" type="submit" id="submit">Siųsti projektą <span class="arr">→</span></button>
+        <p class="fine">* privalomi laukai. Projektą naudojame tik jūsų sąmatai paruošti.</p>
+      </form>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- KONTAKTAI -->
-<section id="kontaktai" style="background: var(--bg2); border-top: 1px solid var(--border);">
-  <div class="container">
-    <div class="section-label">Susisiekite</div>
-    <h2><em>Kontaktai</em></h2>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <h3>Telefonas</h3>
-        <p><a href="tel:+37066420728">+370 664 20728</a></p>
+  <!-- FAQ -->
+  <section class="band" id="duk">
+    <div class="faq">
+      <div>
+        <p class="eyebrow">DUK</p>
+        <h2>Dažniausi klausimai.</h2>
       </div>
-      <div class="contact-card">
-        <h3>El. paštas</h3>
-        <p><a href="mailto:info@bastel.lt">info@bastel.lt</a></p>
+      <div>
+        <details open><summary>Kokio formato projektą reikia atsiųsti?</summary><p>Tinka PDF, DWG/DXF arba aiški nuotrauka. Svarbiausia, kad plane būtų pažymėti šviestuvai, lizdai ir jungikliai: apšvietimo, galios ar bendras elektros planas.</p></details>
+        <details><summary>Kiek kainuoja sąmata?</summary><p>Nuo 40 € už objektą. Tikslią kainą pasakysime gavę projektą, dar prieš pradėdami darbą, tad niekuo nerizikuojate.</p></details>
+        <details><summary>Per kiek laiko gausiu sąmatą?</summary><p>Per 24 valandas nuo projekto gavimo.</p></details>
+        <details><summary>Kodėl klausiate apie sienas ir grindis?</summary><p>Mūriniame ir karkasiniame name naudojamos skirtingos montažinės dėžutės ir tvirtinimo medžiagos. O jei grindys dar neišlietos, dalį kabelių galima pakloti grindyse, todėl keičiasi trasos ir kabelių kiekis.</p></details>
+        <details><summary>Ar privalau pirkti medžiagas per jus?</summary><p>Ne. Sąmata priklauso jums: galite pirkti patys, perduoti ją montuotojui arba palyginti su jo pasiūlymu. Pasiūlymas pirkti montuotojo kainomis galioja tik tada, jei to norite.</p></details>
+        <details><summary>Kaip sąmata apsaugo nuo permokėjimo?</summary><p>Matote kiekvieną medžiagą, jos kiekį ir kainą. Galite iš karto pastebėti, jei montuotojo pasiūlyme kiekiai ar kainos gerokai didesni, ir nepirkti medžiagų, kurios objekte liktų nepanaudotos.</p></details>
       </div>
     </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="band cta">
+    <p class="eyebrow">Pradėkite dabar</p>
+    <h2>Sužinokite tikrą medžiagų kainą prieš perkant.</h2>
+    <div class="hero-ctas" style="margin-top:8px;justify-content:center">
+      <a class="btn btn-dark" href="#ikelti">Įkelti projektą <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="mailto:info@bastel.lt">info@bastel.lt</a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <a class="logo" href="#" aria-label="Bastel"><svg viewBox="240 178 544 148" aria-hidden="true"></svg></a>
+    <span>Elektros instaliacijos sąmatos</span>
+    <a href="mailto:info@bastel.lt">info@bastel.lt</a>
+    <span>© <span id="yr">2026</span> Bastel</span>
+  </footer>
+</main>
+
+<dialog class="thanks" id="thanks" aria-labelledby="thanks-h">
+  <div class="thanks-in">
+    <div class="okb" aria-hidden="true">✓</div>
+    <h2 id="thanks-h">Projektą gavome.</h2>
+    <p>Ačiū! Jūsų projektas ir atsakymai jau mūsų el. pašte.</p>
+    <ol>
+      <li><b>01</b>Peržiūrime projektą</li>
+      <li><b>02</b>Atsiunčiame sąmatos kainą (nuo 40 €)</li>
+      <li><b>03</b>Sąmatą gaunate per 24 val.</li>
+    </ol>
+    <form method="dialog"><button class="btn btn-dark" type="submit">Gerai</button></form>
+    <p class="fine" style="margin-top:14px">Klausimai: <a href="mailto:info@bastel.lt">info@bastel.lt</a></p>
   </div>
-</section>
-
-<!-- UŽKLAUSA -->
-<section id="uzklausos" class="container">
-  <div class="section-label">Užklausa</div>
-  <h2>Gaukite <em>nemokamą konsultaciją</em></h2>
-  <p class="subtitle" style="margin: 0 auto 40px;">Parašykite — atsakome per 1 darbo dieną.</p>
-
-  <div class="form-section">
-    <form id="requestForm" action="https://formspree.io/f/xwkgrpyg" method="POST">
-      <label class="note">Vardas</label>
-      <input type="text" name="name" required placeholder="Jūsų vardas">
-
-      <label class="note">El. paštas</label>
-      <input type="email" name="email" required placeholder="el.pastas@pavyzdys.lt">
-
-      <label class="note">Telefono numeris (neprivalomas)</label>
-      <input type="text" name="phone" placeholder="+370...">
-
-      <label class="note">Kokia situacija? (erdvės dydis, uodų problema)</label>
-      <textarea name="details" placeholder="pvz. Terasa ~40m², labai daug uodų vakarais. Norėčiau sprendimo be chemijos."></textarea>
-
-      <button type="submit" class="btn">Siųsti užklausą →</button>
-      <div id="formMessage" class="note" style="margin-top:8px; display:none;"></div>
-    </form>
-  </div>
-</section>
-
-<footer>
-  &copy; 2025 Bastel MB. Visos teisės saugomos. · <a href="mailto:info@bastel.lt" style="color: var(--accent); text-decoration: none;">info@bastel.lt</a>
-</footer>
+</dialog>
 
 <script>
-  const form = document.getElementById('requestForm');
-  const msg = document.getElementById('formMessage');
+(function(){
+  var wm = document.querySelector('.nav .logo path');
+  var fl = document.querySelector('.foot .logo svg');
+  if (wm && fl) fl.appendChild(wm.cloneNode(true));
+  document.getElementById('yr').textContent = new Date().getFullYear();
 
-  form.addEventListener('submit', async (ev) => {
-    ev.preventDefault();
-    const formData = new FormData(form);
-    try {
-      const res = await fetch(form.action, { method: 'POST', body: formData });
-      if (res.ok) {
-        msg.textContent = '✓ Užklausa išsiųsta — susisieksime netrukus.';
-        msg.style.color = 'var(--accent)';
-        msg.style.display = 'block';
-        form.reset();
-      } else {
-        msg.textContent = 'Įvyko klaida. Rašykite tiesiogiai: info@bastel.lt';
-        msg.style.display = 'block';
-      }
-    } catch(err) {
-      msg.textContent = 'Tinklo klaida. Bandykite dar kartą arba rašykite info@bastel.lt';
-      msg.style.display = 'block';
-    }
+  /* ---------- upload ---------- */
+  var MAX = 10 * 1024 * 1024;
+  var form = document.getElementById('upload'), input = document.getElementById('file'),
+      drop = document.getElementById('drop'), list = document.getElementById('files'),
+      holder = document.getElementById('fileInputs'), err = document.getElementById('err');
+  var picked = [];
+  var canDT = (function(){ try { return !!new DataTransfer(); } catch(e){ return false; } })();
+  if (!canDT) input.name = 'Projektas';
+
+  function fmt(b){ return b > 1048576 ? (b/1048576).toFixed(1).replace('.',',') + ' MB' : Math.max(1, Math.round(b/1024)) + ' KB'; }
+  function total(){ return picked.reduce(function(s,f){ return s + f.size; }, 0); }
+  function render(){
+    list.innerHTML = '';
+    picked.forEach(function(f, i){
+      var li = document.createElement('li');
+      li.innerHTML = '<span aria-hidden="true">▤</span><span class="nm"></span><span class="sz">' + fmt(f.size) + '</span><button type="button" aria-label="Pašalinti">×</button>';
+      li.querySelector('.nm').textContent = f.name;
+      li.querySelector('button').onclick = function(){ picked.splice(i,1); sync(); };
+      list.appendChild(li);
+    });
+  }
+  function sync(){
+    render();
+    if (!canDT) return;
+    holder.innerHTML = '';
+    picked.forEach(function(f, i){
+      var dt = new DataTransfer(); dt.items.add(f);
+      var el = document.createElement('input'); el.type = 'file'; el.name = 'Projektas_' + (i + 1); el.files = dt.files;
+      holder.appendChild(el);
+    });
+    err.textContent = total() > MAX ? 'Failai viršija 10 MB. Didesnius failus siųskite el. paštu info@bastel.lt.' : '';
+  }
+  function add(files){
+    if (!canDT) { picked = Array.prototype.slice.call(files); render(); return; }
+    Array.prototype.forEach.call(files, function(f){
+      if (!picked.some(function(p){ return p.name === f.name && p.size === f.size; })) picked.push(f);
+    });
+    input.value = '';
+    sync();
+  }
+  input.addEventListener('change', function(){ add(input.files); });
+  ['dragenter','dragover'].forEach(function(t){ drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.add('over'); }); });
+  ['dragleave','drop'].forEach(function(t){ drop.addEventListener(t, function(){ drop.classList.remove('over'); }); });
+  drop.addEventListener('drop', function(e){ e.preventDefault(); if (e.dataTransfer && e.dataTransfer.files.length) add(e.dataTransfer.files); });
+
+  form.querySelectorAll('.seg input').forEach(function(r){
+    r.addEventListener('change', function(){ r.closest('.f').classList.remove('bad'); });
   });
-</script>
 
+  if (/^https?:$/.test(location.protocol)) {
+    form.querySelector('[name=_next]').value = location.origin + location.pathname + '?gauta=1';
+  } else {
+    form.querySelector('[name=_next]').remove();
+  }
+
+  form.addEventListener('submit', function(e){
+    var email = form.querySelector('[name=email]');
+    var konstr = form.querySelector('[name=Konstrukcija]:checked'), grind = form.querySelector('[name=Grindys]:checked');
+    document.getElementById('fs-konstr').classList.toggle('bad', !konstr);
+    document.getElementById('fs-grindys').classList.toggle('bad', !grind);
+    var msg = '';
+    if (!picked.length) msg = 'Pridėkite bent vieną projekto failą.';
+    else if (total() > MAX) msg = 'Failai viršija 10 MB. Didesnius failus siųskite el. paštu info@bastel.lt.';
+    else if (!konstr) msg = 'Pažymėkite, ar pastatas mūrinis, ar karkasinis.';
+    else if (!grind) msg = 'Pažymėkite, ar grindys jau išlietos.';
+    else if (!email.value || !email.checkValidity()) { msg = 'Įrašykite teisingą el. pašto adresą, kad galėtume atsakyti.'; email.focus(); }
+    if (msg) { e.preventDefault(); err.textContent = msg; return; }
+    err.textContent = '';
+    var s = document.getElementById('submit'); s.disabled = true; s.innerHTML = 'Siunčiama…';
+  });
+
+  // padėkos langas po sėkmingo išsiuntimo (FormSubmit grąžina į ?gauta=1)
+  if (/[?&]gauta=1/.test(location.search)) {
+    var dlg = document.getElementById('thanks');
+    if (dlg && dlg.showModal) dlg.showModal();
+    if (history.replaceState) history.replaceState(null, '', location.pathname + location.hash);
+  }
+})();
+</script>
 </body>
 </html>
