@@ -255,6 +255,7 @@ select.in{background-image:linear-gradient(45deg,transparent 50%,var(--stone) 50
 .check input{width:16px;height:16px;margin:3px 0 0;accent-color:var(--ink)}
 .err{font-size:14px;line-height:1.4;color:var(--red);font-weight:500}
 .err:empty{display:none}
+label.f.bad .in{box-shadow:0 0 0 1px var(--red)}
 .fine{font-size:13px;line-height:1.6;color:var(--graphite)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 @media (max-width:960px){.up-wrap{grid-template-columns:1fr}}
@@ -340,11 +341,11 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
         <div class="ln" style="--i:7"><span class="k"><span class="ok">✓</span> Tvirtinimo medžiagos<span class="unit">(kompl.)</span></span><span class="v"><i>1</i></span></div>
       </div>
       <div class="sum">
-        <div class="row" style="--i:8"><span class="muted">Montuotojo pasiūlymas</span><span class="strike">1 350 €</span></div>
-        <div class="row" style="--i:9"><span>Medžiagos pagal sąmatą</span><span>980 €</span></div>
-        <div class="row" style="--i:10"><span class="save">Skirtumas</span><span class="save save-chip">−370 €</span></div>
+        <div class="row" style="--i:8"><span class="muted">Montuotojo pasiūlymas</span><span class="strike">1 620 €</span></div>
+        <div class="row" style="--i:9"><span>Medžiagos pagal sąmatą</span><span>1 180 €</span></div>
+        <div class="row" style="--i:10"><span class="save">Skirtumas</span><span class="save save-chip">−440 €</span></div>
       </div>
-      <div class="panel-foot">Iliustracinis pavyzdys: 1 etapas – kabeliavimas iki taškų. Kiekiai ir kainos priklauso nuo jūsų projekto.</div>
+      <div class="panel-foot">Iliustracinis pavyzdys: 1 etapas – kabeliavimas iki taškų. Kainos orientacinės – tikslios priklauso nuo jūsų projekto ir tiekėjų kainų sąmatos dieną.</div>
     </div>
   </section>
 
@@ -424,13 +425,13 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
       </div>
       <div class="shop" aria-hidden="true">
         <div class="shop-h"><span>Medžiaga</span><span>Kiekis</span><span>Įprasta kaina</span><span class="hl">Montuotojo kaina</span></div>
-        <div class="shop-r"><span>Kabelis 3×1,5 mm²</span><span class="q">445 m</span><s>245 €</s><b>201 €</b></div>
-        <div class="shop-r"><span>Kabelis 3×2,5 mm²</span><span class="q">400 m</span><s>300 €</s><b>246 €</b></div>
-        <div class="shop-r"><span>Instaliacinis vamzdis</span><span class="q">480 m</span><s>288 €</s><b>236 €</b></div>
-        <div class="shop-r"><span>FTP kabelis CAT6</span><span class="q">80 m</span><s>44 €</s><b>36 €</b></div>
-        <div class="shop-t"><span>Iš viso</span><span></span><s>877 €</s><b>719 €</b></div>
-        <div class="shop-save"><span>Sutaupote</span><span>−158 €</span></div>
-        <div class="shop-f">+ kabelis 2×1,5 mm², dėžutės, tvirtinimo medžiagos. Iliustracinis pavyzdys – kainos priklauso nuo jūsų projekto.</div>
+        <div class="shop-r"><span>Kabelis 3×1,5 mm²</span><span class="q">445 m</span><s>294 €</s><b>241 €</b></div>
+        <div class="shop-r"><span>Kabelis 3×2,5 mm²</span><span class="q">400 m</span><s>360 €</s><b>295 €</b></div>
+        <div class="shop-r"><span>Instaliacinis vamzdis</span><span class="q">480 m</span><s>346 €</s><b>283 €</b></div>
+        <div class="shop-r"><span>FTP kabelis CAT6</span><span class="q">80 m</span><s>53 €</s><b>43 €</b></div>
+        <div class="shop-t"><span>Iš viso</span><span></span><s>1 053 €</s><b>862 €</b></div>
+        <div class="shop-save"><span>Sutaupote</span><span>−191 €</span></div>
+        <div class="shop-f">+ kabelis 2×1,5 mm², dėžutės, tvirtinimo medžiagos. Iliustracinis pavyzdys – kainos orientacinės ir keičiasi pagal tiekėjų kainas.</div>
       </div>
     </div>
   </section>
@@ -508,16 +509,20 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
         </div>
 
         <div class="row2">
-          <label class="f">Vardas<input class="in" name="Vardas" autocomplete="name" placeholder="Jūsų vardas"></label>
-          <label class="f">El. paštas *<input class="in" type="email" name="email" autocomplete="email" required placeholder="vardas@pastas.lt"></label>
-        </div>
-        <div class="row2">
-          <label class="f">Telefonas<input class="in" type="tel" name="Telefonas" autocomplete="tel" placeholder="+370"></label>
           <label class="f">Objektas
             <select class="in" name="Objektas">
               <option>Namas</option><option>Butas</option><option>Kotedžas</option><option>Komercinės patalpos</option><option>Kita</option>
             </select>
           </label>
+          <label class="f" id="f-lubos">Lubų aukštis, m *<input class="in" name="Lubų aukštis" id="lubos" inputmode="decimal" autocomplete="off" required list="lubos-list" placeholder="Pvz., 2,70"></label>
+          <datalist id="lubos-list"><option value="2,50"><option value="2,60"><option value="2,70"><option value="2,80"><option value="3,00"><option value="3,20"></datalist>
+        </div>
+        <div class="row2">
+          <label class="f">Vardas<input class="in" name="Vardas" autocomplete="name" placeholder="Jūsų vardas"></label>
+          <label class="f">El. paštas *<input class="in" type="email" name="email" autocomplete="email" required placeholder="vardas@pastas.lt"></label>
+        </div>
+        <div class="row2">
+          <label class="f">Telefonas<input class="in" type="tel" name="Telefonas" autocomplete="tel" placeholder="+370"></label>
         </div>
         <label class="f">Pastaba<textarea class="in" name="Pastaba" placeholder="Pvz., šviestuvai jau nupirkti, skaičiuoti tik kabelius ir instaliacijos medžiagas."></textarea></label>
         <label class="check"><input type="checkbox" name="Domina medžiagos montuotojo kainomis" value="Taip"> Domina medžiagų įsigijimas montuotojo kainomis</label>
@@ -643,6 +648,14 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
   ['dragleave','drop'].forEach(function(t){ drop.addEventListener(t, function(){ drop.classList.remove('over'); }); });
   drop.addEventListener('drop', function(e){ e.preventDefault(); if (e.dataTransfer && e.dataTransfer.files.length) add(e.dataTransfer.files); });
 
+  function lubosVal(){
+    var raw = (document.getElementById('lubos').value || '').replace(/\s|m$/gi, '').replace(',', '.');
+    var n = parseFloat(raw);
+    if (!/^\d+(\.\d+)?$/.test(raw) || isNaN(n) || n < 2 || n > 10) return '';
+    return n.toFixed(2).replace('.', ',');
+  }
+  document.getElementById('lubos').addEventListener('input', function(){ document.getElementById('f-lubos').classList.remove('bad'); });
+
   form.querySelectorAll('.seg input').forEach(function(r){
     r.addEventListener('change', function(){ r.closest('.f').classList.remove('bad'); });
   });
@@ -656,6 +669,8 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
   form.addEventListener('submit', function(e){
     var email = form.querySelector('[name=email]');
     var konstr = form.querySelector('[name=Konstrukcija]:checked'), grind = form.querySelector('[name=Grindys]:checked');
+    var lubos = document.getElementById('lubos'), lubosV = lubosVal();
+    document.getElementById('f-lubos').classList.toggle('bad', !lubosV);
     document.getElementById('fs-konstr').classList.toggle('bad', !konstr);
     document.getElementById('fs-grindys').classList.toggle('bad', !grind);
     var msg = '';
@@ -663,10 +678,12 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
     else if (total() > MAX) msg = TOO_BIG;
     else if (!konstr) msg = 'Pažymėkite, ar pastatas mūrinis, ar karkasinis.';
     else if (!grind) msg = 'Pažymėkite, ar grindys jau išlietos.';
+    else if (!lubosV) { msg = 'Įrašykite lubų aukštį metrais, pvz., 2,70 (nuo 2 m).'; lubos.focus(); }
     else if (!email.value || !email.checkValidity()) { msg = 'Įrašykite teisingą el. pašto adresą, kad galėtume atsakyti.'; email.focus(); }
     if (msg) { e.preventDefault(); err.textContent = msg; return; }
     err.textContent = '';
     var s = document.getElementById('submit'); s.disabled = true; s.innerHTML = 'Siunčiama…';
+    lubos.value = lubosV;
     if (SCRIPT_URL) { e.preventDefault(); sendToDrive(s, konstr.value, grind.value); }
   });
 
@@ -686,7 +703,7 @@ dialog.thanks::backdrop{background:rgba(17,24,39,.35);backdrop-filter:blur(3px)}
     var v = function(n){ var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
     var fields = {
       vardas: v('Vardas'), email: v('email'), telefonas: v('Telefonas'), objektas: v('Objektas'),
-      konstrukcija: konstr, grindys: grind, pastaba: v('Pastaba'),
+      konstrukcija: konstr, grindys: grind, lubos: v('Lubų aukštis'), pastaba: v('Pastaba'),
       medziagos: form.querySelector('[name="Domina medžiagos montuotojo kainomis"]').checked
     };
     var honey = v('_honey');
